@@ -7,7 +7,7 @@ module.exports = class CatCommand extends Command {
     constructor(...args) {
         super(...args, {
             name: 'cat',
-            aliases: ['meow', 'cats'],
+            aliases: ['meow', 'cats', 'meoww'],
             description: 'Cats!',
             category: 'APIs',
             usage: ''
