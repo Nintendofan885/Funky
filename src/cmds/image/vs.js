@@ -19,10 +19,10 @@ module.exports = class VSCommand extends Command {
         try {
             const member = await message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(x => x.user.username.toLowerCase() === args.slice(0).join(" ") || x.user.username === args[0]);
             const member2 = await message.mentions.members.first() || message.guild.members.cache.get(args[1]) || message.guild.members.cache.find(x => x.user.username.toLowerCase() === args.slice(1).join(" ") || x.user.username === args[1]);
+            if (!member2) return message.reply(`who is ${member.user.username} gonna verse?`)
             if (!member && member2) return message.reply(`I could not find that first member, but that second member exists!`)
             if (member && !member2) return message.reply(`I could not find that second member, but that first member exists!`)
-            if (!member2) return message.reply(`who is ${member.user.username} gonna verse?`)
-            if (!member && !member2) return message.reply(`missing arguments. Proper usage of this command is \`${this.client.commands.get('vs').usage}\``)
+            if (!args.length) return message.reply(`missing arguments. Proper usage of this command is \`${this.client.commands.get('vs').usage}\``)
             const msg = await message.channel.send('please wait...');
             const genImg = await ameApi.generate('vs', { url: member.user.displayAvatarURL({ format: 'png', size: 1024 }), avatar: member2.user.displayAvatarURL({ format: 'png', size: 1024 }), type: 3 })
             const attachment = new Discord.MessageAttachment(genImg, 'vs.png');

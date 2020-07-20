@@ -9,7 +9,8 @@ module.exports = class ParseCommand extends Command {
             name: 'parse',
             aliases: [],
             description: 'Parses wikitext into HTML.',
-            category: 'Other'
+            category: 'Other',
+            usage: '<wikitext>'
         });
     }
 

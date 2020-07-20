@@ -31,7 +31,7 @@ module.exports = class UrbanCommand extends Command {
         //trim content to meet embed character size requirements
         const trim = (str, max) => ((str.length > max) ? `${str.slice(0, max - 3)}...` : str);
 
-        //we only want one answer!
+        //we only want one answer
         const [answer] = list;
 
         //make embed with data pulled from api
@@ -42,7 +42,7 @@ module.exports = class UrbanCommand extends Command {
             .addFields(
                 { name: 'Definition', value: trim(answer.definition, 1024) },
                 { name: 'Example', value: trim(answer.example, 1024) },
-                { name: 'Rating', value: `${answer.thumbs_up} thumbs up. ${answer.thumbs_down} thumbs down.` }
+                { name: 'Rating', value: `:thumbsup: ${answer.thumbs_up} thumbs up.\n\n:thumbsdown: ${answer.thumbs_down} thumbs down.` }
             );
 
         //send embed.

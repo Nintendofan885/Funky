@@ -9,7 +9,8 @@ module.exports = class TriviaCommand extends Command {
             name: 'trivia',
             aliases: ['quiz'],
             description: 'Test out your knowledge with trivia!',
-            category: 'Other'
+            category: 'Other',
+            usage: ''
         });
     }
 

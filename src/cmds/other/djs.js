@@ -31,7 +31,7 @@ module.exports = class DJSCommand extends Command {
                     message.channel.send({ embed }).then(() => message.channel.stopTyping());
                 } else {
                     // Nope, no results found, let's let the user know
-                    return message.reply(`I don't know mate, but "${query}" doesn't make any sense!`).then(() => message.channel.stopTyping());
+                    return message.reply(`I don't know mate, but \`${query}\` doesn't make any sense!`).then(() => message.channel.stopTyping());
                 }
             })
             .catch(e => {
