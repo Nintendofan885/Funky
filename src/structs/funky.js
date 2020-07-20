@@ -37,5 +37,4 @@ module.exports = class FunkyClient extends Client {
         this.utils.loadEvents();
         this.login(token);
     }
-
 };

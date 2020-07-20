@@ -2,14 +2,14 @@ const Command = require('../../structs/command.js');
 const fetch = require('node-fetch')
 const Discord = require('discord.js')
 
-module.exports = class CatCommand extends Command {
+module.exports = class DogCommand extends Command {
 
     constructor(...args) {
         super(...args, {
-            name: 'cat',
-            aliases: ['meow', 'cats', 'meoww'],
-            description: 'Cats!',
-            category: 'APIs',
+            name: 'dog',
+            aliases: ['woof', 'dogs'],
+            description: 'Dogs!',
+            category: 'Animals',
             usage: ''
         });
     }
@@ -17,12 +17,12 @@ module.exports = class CatCommand extends Command {
     async run(message) {
         try {
             message.channel.startTyping();
-            const catData = await fetch('https://api.thecatapi.com/v1/images/search').then(response => response.json());
-            const catImage = catData[0].url
+            const dogData = await fetch('https://api.thedogapi.com/v1/images/search').then(response => response.json());
+            const dogImage = dogData[0].url
 
             const embed = new Discord.MessageEmbed()
-                .setTitle('Meow!')
-                .setImage(catImage)
+                .setTitle('Woof!')
+                .setImage(dogImage)
 
             message.channel.send(embed).then(() => {
                 message.channel.stopTyping();

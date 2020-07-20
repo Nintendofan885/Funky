@@ -16,8 +16,10 @@
     "discord.js": "^12.2.0",
     "giphy-api": "^2.0.1",
     "glob": "^7.1.6",
+    "got": "^11.5.1",
     "moment": "^2.27.0",
     "node-fetch": "^2.6.0",
+    "node-html-parser": "^1.2.20",
     "querystring": "^0.2.0",
     "twemoji-parser": "^13.0.0",
     "weather-js": "^2.0.0"

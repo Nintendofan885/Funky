@@ -15,11 +15,11 @@ module.exports = class GifCommand extends Command {
     }
 
     async run(message, args) {
-        if (!args[0]) return message.channel.send('please enter a search query.')
         try {
+            if (!args[0]) return message.channel.send(`Invalid arguments. Please refer to \`${this.client.commands.get('gif').usage}\` for how to use this command.`)
             giphy.search(args.join(' ')).then(function (res) {
-                let id = res.data[0].id;
-                let url = `https://media.giphy.com/media/${id}/giphy.gif`;
+                const id = res.data[0].id;
+                const url = `https://media.giphy.com/media/${id}/giphy.gif`;
                 const embed = new Discord.MessageEmbed()
                     .setColor('RANDOM')
                     .setFooter(message.guild.name, message.guild.iconURL())
@@ -28,7 +28,7 @@ module.exports = class GifCommand extends Command {
                 message.channel.send(embed);
             });
         } catch {
-            return message.channel.send("**Not Found!**")
+            return message.channel.send('not found.')
         }
     }
 }

@@ -13,10 +13,14 @@ module.exports = class AvatarCommand extends Command {
     }
 
     async run(message, args) {
-        const member = await message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(x => x.user.username.toLowerCase() === args.slice(0).join(" ") || x.user.username === args[0]) || message.member;
-        const embed = new Discord.MessageEmbed()
-            .setTitle(`${member.user.username}'s Avatar`)
-            .setImage(`${member.user.displayAvatarURL({ dynamic: true, size: 4096 })}`)
-        message.channel.send(embed)
+        try {
+            const member = await message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(x => x.user.username.toLowerCase() === args.slice(0).join(" ") || x.user.username === args[0]) || message.member;
+            const embed = new Discord.MessageEmbed()
+                .setTitle(`${member.user.username}'s Avatar`)
+                .setImage(`${member.user.displayAvatarURL({ dynamic: true, size: 4096 })}`)
+            message.channel.send(embed)
+        } catch (err) {
+            console.log(err)
+        }
     }
 }
