@@ -24,10 +24,10 @@ module.exports = class HTTPCommand extends Command {
             const embed = new Discord.MessageEmbed()
                 .setTitle(`HTTP Error ${args}`)
                 .setImage(`https://http.cat/${args}.jpg`)
-            message.channel.send(embed).catch(console.error);
+            message.channel.send(embed).catch(err => console.log(err));
         }
         else {
-            return message.reply(`404: Status code \`${args}\` not found.`).catch(console.error);
+            return message.reply(`404: Status code \`${args}\` not found.`).catch(err => console.log(err));
         }
     }
 }

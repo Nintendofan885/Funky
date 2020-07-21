@@ -17,18 +17,20 @@ module.exports = class WeatherCommand extends Command {
     async run(message, args) {
         if (!args) return message.reply('please enter a city name!')
 
+        message.channel.startTyping();
         weather.find({ search: args.join(' '), degreeType: 'C' }, function (err, result) {
 
             if (err) message.channel.send(err.message);
 
+            //if no cities were found, return and notify user.
             if (result.length === 0) {
-                message.reply('**please enter a valid location\'s name')
-                return undefined;
+                return message.reply('**please enter a valid location\'s name');
             }
 
             var current = result[0].current;
             var location = result[0].location;
 
+            //create embed with data
             const embed = new Discord.MessageEmbed()
                 .setDescription(`**${current.skytext}**`)
                 .setAuthor(`Weather for ${current.observationpoint}`)
@@ -46,6 +48,7 @@ module.exports = class WeatherCommand extends Command {
                 .setTimestamp()
 
             message.channel.send(embed)
+            message.channel.stopTyping();
         });
     }
 }

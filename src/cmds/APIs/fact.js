@@ -15,13 +15,14 @@ module.exports = class FactCommand extends Command {
 
     async run(message) {
         try {
+            message.channel.startTyping();
             const fact = await fetch('https://uselessfacts.jsph.pl/random.json?language=en').then(response => response.json())
             const embed = new Discord.MessageEmbed()
                 .setTitle('Random fact!')
                 .setURL(fact.permalink)
                 .setDescription(fact.text)
                 .setTimestamp()
-            message.channel.send(embed)
+            message.channel.send(embed).then(() => message.channel.stopTyping());
         } catch (err) {
             console.log(err).then(() => message.reply('Error occurred! I have automatically sent this my developers, so no need to worry!'))
         }

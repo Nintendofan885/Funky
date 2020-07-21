@@ -25,8 +25,7 @@ module.exports = class JokeCommand extends Command {
                 { name: joke.setup, value: joke.punchline }
             )
         //send embed then stop typing.
-        message.channel.send(embed).then(() => {
-            message.channel.stopTyping();
-        });
+        message.channel.send(embed)
+        message.channel.stopTyping();
     }
 }

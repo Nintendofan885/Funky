@@ -1,7 +1,7 @@
 const Command = require('../../structs/command.js')
-const { image_api } = require('../../../config.json')
+const { imgen_api } = require('../../../config.json')
 const ameClient = require('amethyste-api')
-const ameApi = new ameClient(image_api)
+const ameApi = new ameClient(imgen_api)
 const Discord = require('discord.js')
 
 module.exports = class TriggeredCommand extends Command {

@@ -9,7 +9,7 @@ module.exports = class extends Event {
         if (!message.guild || message.author.bot) return;
 
         if (message.content.match(mentionRegex))
-            message.reply(`hello! My prefix for ${message.guild.name} is: \`${this.client.prefix}\`!`);
+            message.reply(`hello! My prefix for ${message.guild.name} is: \`${this.client.prefix}\`! For a list of all my commands, please run the \`${this.client.prefix}help\` command!`);
 
         const prefix = message.content.match(mentionRegexPrefix) ?
             message.content.match(mentionRegexPrefix)[0] : this.client.prefix;

@@ -24,9 +24,8 @@ module.exports = class CatCommand extends Command {
                 .setTitle('Meow!')
                 .setImage(catImage)
 
-            message.channel.send(embed).then(() => {
-                message.channel.stopTyping();
-            });
+            message.channel.send(embed)
+            message.channel.stopTyping();
         } catch (err) {
             console.log(err)
         }

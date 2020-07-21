@@ -22,7 +22,8 @@ module.exports = class FoxCommand extends Command {
                 .setTitle('Fox!')
                 .setImage(fox.image)
 
-            message.channel.send(embed).then(() => message.channel.stopTyping());
+            message.channel.send(embed)
+            message.channel.stopTyping();
         } catch (err) {
             console.log(err)
         }
