@@ -14,7 +14,7 @@ module.exports = class LMGTFYCommand extends Command {
 
     async run(message, args) {
         message.delete();
-        const query = args.join(' ')
+        const query = args.join('_')
         if (!args.length) return message.reply('uh, what are you making me search google for?').then(m => m.delete({ timeout: 3000 }))
         let link = `https://lmgtfy.com/?q=${query}`
         if (query.startsWith('<') && query.endsWith('>') || query.includes('noembed')) link = `<https://lmgtfy.com/?q=${query.replace(/(<|>|(_|)noembed)?/g, '')}>`

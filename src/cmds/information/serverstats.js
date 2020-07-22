@@ -13,7 +13,7 @@ module.exports = class SSCommand extends Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         const embed = new Discord.MessageEmbed()
             .setTitle(`Stats for ${message.guild.name}`)
             .addFields(

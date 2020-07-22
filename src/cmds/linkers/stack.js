@@ -13,7 +13,7 @@ module.exports = class StackCommand extends Command {
     }
 
     async run(message, args) {
-        const query = args.join(' ')
+        const query = args.join('_')
         if (!args.length) return message.reply('uh, what do you want to make me search StackOverflow for?').then(m => m.delete({ timeout: 3000 }))
         let link = `https://stackoverflow.com/search?q=${query}`
         if (query.startsWith('<') && query.endsWith('>') || query.includes('noembed')) link = `<https://stackoverflow.com/search?q=${query.replace(/(<|>|(_|)noembed)?/g, '')}>`
