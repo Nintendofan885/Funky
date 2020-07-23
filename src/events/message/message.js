@@ -22,5 +22,6 @@ module.exports = class extends Event {
         if (command) {
             command.run(message, args);
         }
+        process.on('unhandledRejection', error => console.error('Uncaught Promise Rejection.', error));
     }
 }

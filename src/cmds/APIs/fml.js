@@ -2,12 +2,12 @@ const Command = require('../../structs/command.js');
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
 
-module.exports = class FactCommand extends Command {
+module.exports = class FMLCommand extends Command {
     constructor(...args) {
         super(...args, {
-            name: 'fact',
-            aliases: ['facts'],
-            description: 'Random fact!',
+            name: 'fml',
+            aliases: ['kms'],
+            description: 'Fu*k my life.',
             category: 'APIs',
             usage: ''
         });
@@ -16,12 +16,9 @@ module.exports = class FactCommand extends Command {
     async run(message) {
         try {
             message.channel.startTyping();
-            const fact = await fetch('https://uselessfacts.jsph.pl/random.json?language=en').then(response => response.json())
+            const fml = await fetch('https://api.alexflipnote.dev/fml').then(response => response.json())
             const embed = new Discord.MessageEmbed()
-                .setTitle('Random fact!')
-                .setURL(fact.permalink)
-                .setDescription(fact.text)
-                .setTimestamp()
+                .setTitle(fml.text)
             message.channel.send(embed);
             message.channel.stopTyping();
         } catch (err) {
