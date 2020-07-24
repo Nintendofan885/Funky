@@ -14,7 +14,7 @@ module.exports = class KickCommand extends Command {
     async run(message, args) {
         if (message.member.hasPermission('KICK_MEMBERS')) {
 
-            const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(x => x.user.username.toLowerCase() === args.slice(0).join(" ") || x.user.username === args[0]);
+            const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(x => x.user.username.toLowerCase() === args.slice(0).join(' ') || x.user.username === args[0]);
             if (!message.mentions.users.size) {
                 return message.reply('silly goose! You need to mention a user in order to kick them!');
             }

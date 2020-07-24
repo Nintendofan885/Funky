@@ -7,7 +7,7 @@ module.exports = class LMGTFYCommand extends Command {
             name: 'lmgtfy',
             aliases: ['google'],
             description: 'Let Me Google That For You. Comes with an option to remove the (rather offensive) embed by wrapping your search query in \`<>\`.',
-            category: 'Linkers',
+            category: 'Other',
             usage: '<search query> [noembed]'
         });
     }

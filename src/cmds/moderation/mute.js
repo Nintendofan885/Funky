@@ -16,6 +16,7 @@ module.exports = class MuteCommand extends Command {
         const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(x => x.user.username.toLowerCase() === args.slice(0).join(" ") || x.user.username === args[0]);
 
         try {
+            if (muteRole.rawPosition > message.guild.me.roles.highest.rawPosition) return message.reply(`uh, the \`Muted\` role is above me in the role hierachy, move it below my role, then try again.`)
             if (!member) return message.reply('who am I going to mute, huh?')
             if (!message.guild.me.hasPermission("MANAGE_ROLES")) return message.reply("uh, I don't have the permission to manage roles, so how am I going to mute that user?").then(msg => msg.delete({ timeout: 5000 })).catch(console.error);
             if (member.roles.cache.some(role => role.name === 'Muted')) return message.reply('that user is already muted. how many more times are you trying to mute them?')

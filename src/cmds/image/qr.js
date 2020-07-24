@@ -14,7 +14,7 @@ module.exports = class RipCommand extends Command {
 
     async run(message, args) {
         const link = args.join('_')
-        if (!link) return message.channel.send(`Invalid arguments. Please refer to \`${this.client.commands.get('qr').usage}\` for how to use this command.`)
+        if (!link) return message.channel.send(`Invalid arguments. Please refer to \`${this.client.commands.get(this.name).usage}\` for how to use this command.`)
 
         const embed = new Discord.MessageEmbed()
             .setImage(`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${link.replace(/(<|>)?/, '')}`)

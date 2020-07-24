@@ -18,7 +18,7 @@ module.exports = class EnlargeCommand extends Command {
         const emoji = args[0];
         if (!emoji) return message.channel.send("No emoji provided!");
 
-        let custom = Discord.Util.parseEmoji(emoji);
+        const custom = Discord.Util.parseEmoji(emoji);
 
         if (custom.id) {
             const embed = new Discord.MessageEmbed()
@@ -27,7 +27,7 @@ module.exports = class EnlargeCommand extends Command {
                 .setImage(`https://cdn.discordapp.com/emojis/${custom.id}.${custom.animated ? "gif" : "png"}`);
             return message.channel.send(embed);
         } else {
-            let parsed = parse(emoji, { assetType: "png" });
+            const parsed = parse(emoji, { assetType: "png" });
             if (!parsed[0]) return message.channel.send("Invalid emoji!");
             const embed = new Discord.MessageEmbed()
                 .setTitle(`Enlarged version of ${emoji}`)

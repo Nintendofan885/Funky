@@ -1,4 +1,5 @@
 const Command = require('../../structs/command.js');
+const fetch = require('node-fetch')
 const Discord = require('discord.js');
 
 module.exports = class HexCommand extends Command {
@@ -14,14 +15,25 @@ module.exports = class HexCommand extends Command {
 
     async run(message, args) {
         try {
-            if (!args[0]) return message.channel.send(`Invalid arguments. Please refer to \`${this.client.commands.get('hex').usage}\` for how to use this command.`)
-            if (!args[0].match(/[0-9a-fA-F]+/)) return message.reply('hmmm, that doesn\'t look like a valid hex code. Try again.')
+            message.channel.startTyping();
+            if (!args[0]) return message.channel.send(`Invalid arguments. Please refer to \`${this.client.commands.get(this.name).usage}\` for how to use this command.`).then(() => message.channel.stopTyping());
+            if (!args[0].match(/[0-9a-fA-F]+/)) return message.reply('hmmm, that doesn\'t look like a valid hex code. Try again.').then(() => message.channel.stopTyping());
+            const hex = args[0].replace('#', '')
 
-            const hex = args[0]
+            const data = await fetch(`https://api.alexflipnote.dev/color/${hex}`).then(response => response.json()).catch(function (err) {
+                return message.reply('not a valid hex code.')
+            });
+
+            //const data = await fetch(`https://api.alexflipnote.dev/color/${hex}`).then(response => response.json()).catch(err => message.reply(`error: ${err}`))
+
             const embed = new Discord.MessageEmbed()
-                .setImage(`https://api.alexflipnote.dev/color/image/${hex.replace('#', '')}`)
+                .setTitle(data.name)
+                .setColor(data.hex)
+                .setImage(data.image)
+                .setFooter(`${data.rgb}`)
 
-            message.channel.send(embed);
+            if (data.name) message.channel.send(embed);
+            message.channel.stopTyping();
         } catch (err) {
             console.error(err)
         }

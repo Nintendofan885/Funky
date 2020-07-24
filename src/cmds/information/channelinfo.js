@@ -32,12 +32,12 @@ module.exports = class ChannelInfoCommand extends Command {
         const embed = new Discord.MessageEmbed()
             .setColor('RANDOM')
             .setAuthor(`Channels | ${channel.name}`, message.guild.iconURL())
-            .addField('Channel Name', `\`${channel.name}\``, true)
-            .addField('Channel ID', `\`${channel.id}\``, true)
-            .addField('Channel Type', `\`${types[channel.type]}\``, true)
+            .addField('Name', `\`${channel.name}\``, true)
+            .addField('ID', `\`${channel.id}\``, true)
+            .addField('Type', `\`${types[channel.type]}\``, true)
             .addField('NSFW?', `${channel.nsfw ? '\`True\`' : '\`False\`'}`, true)
-            .addField('Channel Topic', `${channel.topic ? `\`${channel.topic}\`` : '\`none\`'}`, true)
-            .addField('Channel Created At', `\`${new Date(channel.createdAt).toLocaleString('en-GB', { dateStyle: 'full' })}\``, true)
+            .addField('Topic', `${channel.topic ? `\`${channel.topic}\`` : '\`none\`'}`, true)
+            .addField('Created At', `\`${new Date(channel.createdAt).toLocaleString('en-GB', { dateStyle: 'full' })}\``, true)
             .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())
 
         //send embed
