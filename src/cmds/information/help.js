@@ -40,7 +40,7 @@ module.exports = class HelpCommand extends Command {
                 `These are the available commands for ${message.guild.name}`,
                 `The bot's prefix is: \`${this.client.prefix}\``,
                 `Command parameters: \`<>\` is strict & \`[]\` is optional.`,
-                `Feel free to invite the bot to your other servers using [this link](https://discordapp.com/oauth2/authorize?client_id=711115573697708042&scope=bot&permissions=2013654134).`
+                `Feel free to invite the bot to your other servers using [this link](https://discord.com/oauth2/authorize?client_id=711115573697708042&scope=bot&permissions=2013654134).`
             ]);
 
             let categories;
